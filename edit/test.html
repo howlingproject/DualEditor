@@ -35,52 +35,31 @@
 <script type="text/javascript" src="js/fn-editor.js"></script>
 <script type="text/javascript" src="js/fn-son-markdown.js"></script>
 <script type="text/javascript" src="js/fn-son-edit.js"></script>
+
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
 
 	//prettyPrint();
-	$("#wikiEditor").append("ë§ˆí¬ì—… í…ŒìŠ¤íŠ¸\r\n[hr]\r\n**êµµê²Œ**\r\n//ê¸°ìš¸ìž„//\r\n__ë°‘ì¤„__\r\n[d]ì·¨ì†Œì„ [d]\r\n[sb]ì•„ëž˜ì²¨ìž[sb]\r\n[sp]ìœ„ì²¨ìž[sp]\r\n[field|í•„ë“œì…‹ íƒ€ì´í‹€]í•„ë“œì…‹[field]\r\n[alert]ê²½ê³ [alert]\r\n[info]ì•ˆë‚´[info]\r\n");	
+	$("#wikiEditor").append("¸¶Å©¾÷ Å×½ºÆ®\r\n[hr]\r\n**±½°Ô**\r\n//±â¿ïÀÓ//\r\n__¹ØÁÙ__\r\n[d]Ãë¼Ò¼±[d]\r\n[sb]¾Æ·¡Ã·ÀÚ[sb]\r\n[sp]À§Ã·ÀÚ[sp]\r\n[field|ÇÊµå¼Â Å¸ÀÌÆ²]ÇÊµå¼Â[field]\r\n[alert]°æ°í[alert]\r\n[info]¾È³»[info]\r\n");	
 	var editor = document.getElementById("wikiEditor");		// [object HTMLTextAreaElement]
 	
-	// ê° ì—ë””í„° ë²„íŠ¼ í´ë¦­ì‹œ ì•¡ì…˜ ì²˜ë¦¬ 
+	// °¢ ¿¡µðÅÍ ¹öÆ° Å¬¸¯½Ã ¾×¼Ç Ã³¸® 
 	$('.e-tb-btn').each(function(){
 		$(this).on("click", function() {		
 			var $me = $(this);
 			var data = $me.data();
 			
-			// ì—ë””í„° ì•¡ì…˜ ì²˜ë¦¬
+			// ¿¡µðÅÍ ¾×¼Ç Ã³¸®
 			$.editorAction(editor, $me, data);
 		});
 	});
 	
 	setInterval(function() {
 		$("#wikimaincol").text("");
-		var txt = $.SonJS.markdown( $("#wikiEditor").val() ); 
+		var txt = SONJS.markdown( $("#wikiEditor").val() ); 
 		$("#wikimaincol").append( txt ); 
 	}, 1000);
-	
-	/* 
-	$("#btnpre").click( function() {
-		$("#wikimaincol").text("");
-		
-		var txt = $("#wikiEditor").val();
-		txt = txt.replace(/(^\s*)|(\s*$)/g, "" ).replace(/\n/ig, "<br>");
-		txt = $.BOLD( txt );
-		txt = $.ITALIC( txt );
-		txt = $.UNDERLINING( txt );
-		txt = $.SUPERSCRIPT( txt );
-		txt = $.SUBERSCRIPT( txt );
-		txt = $.H1( txt );
-		txt = $.HR( txt );
-		txt = $.FIELD( txt );
-		txt = $.ALERT( txt );
-		txt = $.INFO( txt );
-		
-		$("#wikimaincol").append( txt ); 
-	});
-	 */
-	
 	
 	
 });
@@ -88,19 +67,19 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<h3>Insert Mode, Append Mode ê¸°ëŠ¥ ì¶”ê°€</h3>
+	<h3>Insert Mode, Append Mode ±â´É Ãß°¡</h3>
 	<div class="e-toolbar">
-	<input type="button" class="e-tb-btn" value="êµµê²Œ" id="bold" data-mode="append" data-before="**" data-center=" " data-after="**" />
-	<input type="button" class="e-tb-btn" value="ê¸°ìš¸ìž„" id="italic" data-mode="append" data-before="//" data-center=" " data-after="//" />
-	<input type="button" class="e-tb-btn" value="ë°‘ì¤„" id="underline" data-mode="append" data-before="__" data-center=" " data-after="__" />
-	<input type="button" class="e-tb-btn" value="ì·¨ì†Œì„ " id="strike" data-mode="append" data-before="[d]" data-center=" " data-after="[d]" />
-	<input type="button" class="e-tb-btn" value="ì•„ëž˜ì²¨ìž" id="sub" data-mode="append" data-before="[sb]" data-center=" " data-after="[sb]" />
-	<input type="button" class="e-tb-btn" value="ìœ„ì²¨ìž" id="sup" data-mode="append" data-before="[sp]" data-center=" " data-after="[sp]" />
+	<input type="button" class="e-tb-btn" value="±½°Ô" id="bold" data-mode="append" data-before="**" data-center=" " data-after="**" />
+	<input type="button" class="e-tb-btn" value="±â¿ïÀÓ" id="italic" data-mode="append" data-before="//" data-center=" " data-after="//" />
+	<input type="button" class="e-tb-btn" value="¹ØÁÙ" id="underline" data-mode="append" data-before="__" data-center=" " data-after="__" />
+	<input type="button" class="e-tb-btn" value="Ãë¼Ò¼±" id="strike" data-mode="append" data-before="[d]" data-center=" " data-after="[d]" />
+	<input type="button" class="e-tb-btn" value="¾Æ·¡Ã·ÀÚ" id="sub" data-mode="append" data-before="[sb]" data-center=" " data-after="[sb]" />
+	<input type="button" class="e-tb-btn" value="À§Ã·ÀÚ" id="sup" data-mode="append" data-before="[sp]" data-center=" " data-after="[sp]" />
 	<br />
-	<input type="button" class="e-tb-btn" value="êµ¬ë¶„ì„ " id="line" data-mode="insert" data-before="[hr]" data-center="" data-after="" />
-	<input type="button" class="e-tb-btn" value="í•„ë“œì…‹" id="fieldset" data-mode="append" data-before="[field|íƒ€ì´í‹€]" data-center=""  data-after="[field]" />
-	<input type="button" class="e-tb-btn" value="ê²½ê³ " id="alert" data-mode="append" data-before="[alert]" data-center=" " data-after="[alert]" />
-	<input type="button" class="e-tb-btn" value="ì•ˆë‚´" id="info" data-mode="append"  data-before="[info]"  data-center=" "  data-after="[info]" />
+	<input type="button" class="e-tb-btn" value="±¸ºÐ¼±" id="line" data-mode="insert" data-before="[hr]" data-center="" data-after="" />
+	<input type="button" class="e-tb-btn" value="ÇÊµå¼Â" id="fieldset" data-mode="append" data-before="[field|Å¸ÀÌÆ²]" data-center=""  data-after="[field]" />
+	<input type="button" class="e-tb-btn" value="°æ°í" id="alert" data-mode="append" data-before="[alert]" data-center=" " data-after="[alert]" />
+	<input type="button" class="e-tb-btn" value="¾È³»" id="info" data-mode="append"  data-before="[info]"  data-center=" "  data-after="[info]" />
 	
 	
 	</div>
