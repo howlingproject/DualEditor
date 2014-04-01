@@ -1,8 +1,0 @@
-
-(function ($) {
-	jQuery.SonJS = {};
-	
-
-	
-	
-})(jQuery);
