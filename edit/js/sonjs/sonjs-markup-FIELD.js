@@ -1,4 +1,4 @@
 SONJS.markdown.FIELD = function(contents){
-	contents = contents.replace(/\[field(\|(.*?))?\](.*)\[field\]/gm, "<fieldset class=\"fieldset\">\r\n<legend class=\"legend\">$2</legend>\n$3\n</fieldset>");
+	contents = contents.replace(/\[field(\|([\w\W]+?))?\]([\w\W]+?)\[field\]/gm, "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 class=\"panel-title\">$2</h3></div><div class=\"panel-body\">$3</div></div>");
 	return contents;
 }

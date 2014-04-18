@@ -5,6 +5,10 @@ var SONJS = (function(){
 
 	SONJS.markdown = function(contents){
 		contents = contents.replace(/(^\s*)|(\s*$)/g, "" ).replace(/\n/ig, "<br>");
+		contents = SONJS.markdown.FONT( contents );
+		contents = SONJS.markdown.FONTSIZE( contents );
+		contents = SONJS.markdown.FONTSTYLE( contents );
+		contents = SONJS.markdown.ALIGN( contents );
 		contents = SONJS.markdown.BOLD( contents );
 		contents = SONJS.markdown.ITALIC( contents );
 		contents = SONJS.markdown.UNDERLINING( contents );
@@ -20,8 +24,11 @@ var SONJS = (function(){
 	
 	
 	SONJS.append = function(){
+		loadJQuery("js/sonjs/sonjs-markup-FONT.js");
+		loadJQuery("js/sonjs/sonjs-markup-ALIGN.js");
 		loadJQuery("js/sonjs/sonjs-markup-BOLD.js");
 		loadJQuery("js/sonjs/sonjs-markup-ITALIC.js");
+		loadJQuery("js/sonjs/sonjs-markup-DEL.js");
 		loadJQuery("js/sonjs/sonjs-markup-UNDERLINING.js");
 		loadJQuery("js/sonjs/sonjs-markup-SUPERSCRIPT.js");
 		loadJQuery("js/sonjs/sonjs-markup-SUBERSCRIPT.js");

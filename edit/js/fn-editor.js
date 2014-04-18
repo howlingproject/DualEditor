@@ -13,27 +13,33 @@
     	$.print("$me : " + $me);
 		$.print("data : " + data);
     	
-    	if(data.mode == 'append') {
+		if(data.mode == 'append') {
 			// 현재 블럭 위치에 지정된 태그를 감싼다. Textarea, btn-object, btn-data 
 			$.appendTag(textEditor, $me, data);
 		} else if(data.mode == 'insert') {
-			// 현재 커서 위치에 지정된 태그를 추가한다.  
-			$.insertTag(textEditor, $me, data);
+			// 현재 커서 위치에 지정된 태그를 추가한다.
+			$.appendTag(textEditor, $me, data);
+		} else if(data.mode == 'font') {
+			$.appendTag(textEditor, $me, data);
+		} else if(data.mode == 'color') {
+			$.layer_select.color.dropdownColor(textEditor, $me, data);
 		} else if(data.mode == 'layer') {
-			// 현재 커서 위치에 레이어 입력 태그를 추가한다.  
-			if($me.attr("id") == "table") {		// 표 만들기 
-				$.tableLayer({
-					'textEditor' : textEditor,
-					'$me' : $me,
-					'data' : data,
-				});
+			// 현재 커서 위치에 레이어 입력 태그를 추가한다.
+			if (document.selection) { //IE
+				textEditor.currentPos = document.selection.createRange().duplicate();	
 			}
+			var $layer = $.makeLayer.getLayer( data.type );
+			$layer({
+				'textEditor' : textEditor,
+				'tempLayer' : tempLayer
+			});
+		} else if(data.mode == 'rich') {
 			
-		} else if(data.mode == 'colorbox') { 
-			// 현재 블럭 위치에 선택한 태그를 감싼다. 
-			
-		} else if(data.mode == 'select') {
-			// 현재 블럭 위치에 선택한 태그를 감싼다. 
+			if( data.type == "undo" || data.type == "redo" ){
+				document.execCommand( data.type, false, null );
+			}else{
+				$.richEditTag(textEditor, $me, data);	
+			}
 		}
     };
     
