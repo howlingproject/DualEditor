@@ -63,23 +63,39 @@ $(document).ready(function() {
 
 
 	//여기서부터 테이블
-	$("#tableModal .btn-primary").on("click",function(){
+	
+	//오케이 했을시 마크업
+	$("#tableModal #ok").on("click",function(){
 		var html = '';
 		html += "||셀제목";
 		html += "||셀제목";
 		html += "|| \n";
-		
-		for( var i=0; i < $("#tableModal form").length; i++  ){
-			$($("#tableModal form")[i]).find('input').each(function(){ 
+
+		$("#tableModal #tableHYdiv form").each(function(){
+			$(this).find('input').each(function(){ 
 				html += "|" + $(this).val();
 				$(this).val("");
 			});
 			html += "| \n"
-		}
+		});
+		
 		$.textInsert(editor, html, "", "" );
 		$('#tableModal').modal('hide');
 	});
-	
+	 
+	// 행삭제
+	tableEvent();
+	 
+	//행적용
+	$("#tableHYform").find("button").on("click", function(){
+		var hh = $(this).parent().find("input")[0].value;
+		var yy = $(this).parent().find("input")[1].value;
+		$("#tableHYdiv").empty();
+		$("#tableHYdiv").html( tableEach( hh, yy ) );
+		tableEvent();
+	});
+	 
+	 
 	//여기서부터 링크
 	$("#urlModal .btn-primary").on("click",function(){
 		var text = $("#urlModal form").find('input')[0].value ;
@@ -94,7 +110,28 @@ $(document).ready(function() {
 	
 });
 
-var imsi; 
+// 행삭제
+function tableEvent(){
+	$("#tableModal #tableHYdiv form").each(function(){
+		$(this).find("button").on("click",function(){
+			$(this).parent().remove(); 
+		});
+	});
+}
+function tableEach(hh, yy){
+	 var html = "";
+	 for( var h=0; h < hh; h++ ){
+		 html += "<form class=\"form-inline\" role=\"form\">\n";
+		 for( var y=0; y < yy; y++ ){
+			 html += "<div class=\"form-group\">\n";
+			 html += "<input type=\"text\" class=\"form-control\">\n";
+			 html += "</div>\n";
+		 }
+		 html += "<button type=\"button\" class=\"btn btn-primary\">행삭제</button>\n</form>\n";			 
+	 }
+	 return html;
+}
+
 function tableRex( contexts ){
 	if( contexts == null ){
 		var editText = $("#wikiEditor").val();	
@@ -152,7 +189,6 @@ function tableRex( contexts ){
 		}
 		
 	}
-	imsi = arrayContents;
 	return arrayContents.join("<br>");
 }
 
@@ -409,6 +445,18 @@ function orderList( contexts ){
     <div class="modal-content">
       <div class="modal-body">
        
+		<form class="form-inline" id="tableHYform" role="form">
+			<div class="form-group">
+				<input type="number" class="form-control"> 행 x
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control"> 열
+			</div>
+			<button type="button" class="btn btn-primary">적용</button>
+		</form>
+       <hr>
+       
+       <div id="tableHYdiv">
 <form class="form-inline" role="form">
 	<div class="form-group">
 		<input type="text" class="form-control">
@@ -416,6 +464,7 @@ function orderList( contexts ){
 	<div class="form-group">
     	<input type="text" class="form-control">
   	</div>
+  	<button type="button" class="btn btn-primary">행삭제</button>
 </form>
 <form class="form-inline" role="form">
 	<div class="form-group">
@@ -424,12 +473,14 @@ function orderList( contexts ){
 	<div class="form-group">
     	<input type="text" class="form-control">
   	</div>
+  	<button type="button" class="btn btn-primary">행삭제</button>
 </form>
+       </div>
        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="aaa">Save changes</button>
+        <button type="button" class="btn btn-primary" id="ok">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
