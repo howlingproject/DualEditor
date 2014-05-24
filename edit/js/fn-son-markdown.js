@@ -4,6 +4,7 @@ var SONJS = (function(){
 	SONJS.markdown = {};
 
 	SONJS.markdown = function(contents){
+		contents = SONJS.markdown.H1( contents );
 		contents = contents.replace(/(^\s*)|(\s*$)/g, "" ).replace(/\n/ig, "<br>");
 		contents = SONJS.markdown.FONT( contents );
 		contents = SONJS.markdown.FONTSIZE( contents );
@@ -14,11 +15,15 @@ var SONJS = (function(){
 		contents = SONJS.markdown.UNDERLINING( contents );
 		contents = SONJS.markdown.SUPERSCRIPT( contents );
 		contents = SONJS.markdown.SUBERSCRIPT( contents );
-		contents = SONJS.markdown.H1( contents );
+		
 		contents = SONJS.markdown.HR( contents );
 		contents = SONJS.markdown.FIELD( contents );
 		contents = SONJS.markdown.ALERT( contents );
 		contents = SONJS.markdown.INFO( contents );
+		contents = SONJS.markdown.LINK( contents );
+		contents = tableRex( contents );
+		contents = orderList( contents );
+		contents = unorderList( contents );
 		return contents;
 	};
 	
@@ -37,6 +42,7 @@ var SONJS = (function(){
 		loadJQuery("js/sonjs/sonjs-markup-FIELD.js");
 		loadJQuery("js/sonjs/sonjs-markup-ALERT.js");
 		loadJQuery("js/sonjs/sonjs-markup-INFO.js");
+		loadJQuery("js/sonjs/sonjs-markup-LINK.js");
 	};
 	SONJS.append();
 	

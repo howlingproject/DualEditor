@@ -25,6 +25,7 @@
 			$.layer_select.color.dropdownColor(textEditor, $me, data);
 		} else if(data.mode == 'layer') {
 			// 현재 커서 위치에 레이어 입력 태그를 추가한다.
+			/*
 			if (document.selection) { //IE
 				textEditor.currentPos = document.selection.createRange().duplicate();	
 			}
@@ -33,6 +34,8 @@
 				'textEditor' : textEditor,
 				'tempLayer' : tempLayer
 			});
+			
+			*/
 		} else if(data.mode == 'rich') {
 			
 			if( data.type == "undo" || data.type == "redo" ){
