@@ -5,6 +5,7 @@ var SONJS = (function(){
 
 	SONJS.markdown = function(contents){
 		contents = SONJS.markdown.H1( contents );
+		contents = SONJS.markdown.HR( contents );
 		contents = contents.replace(/(^\s*)|(\s*$)/g, "" ).replace(/\n/ig, "<br>");
 		contents = SONJS.markdown.FONT( contents );
 		contents = SONJS.markdown.FONTSIZE( contents );
@@ -12,11 +13,11 @@ var SONJS = (function(){
 		contents = SONJS.markdown.ALIGN( contents );
 		contents = SONJS.markdown.BOLD( contents );
 		contents = SONJS.markdown.ITALIC( contents );
+		contents = SONJS.markdown.DEL( contents );
 		contents = SONJS.markdown.UNDERLINING( contents );
 		contents = SONJS.markdown.SUPERSCRIPT( contents );
 		contents = SONJS.markdown.SUBERSCRIPT( contents );
 		
-		contents = SONJS.markdown.HR( contents );
 		contents = SONJS.markdown.FIELD( contents );
 		contents = SONJS.markdown.ALERT( contents );
 		contents = SONJS.markdown.INFO( contents );

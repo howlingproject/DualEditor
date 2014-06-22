@@ -1,4 +1,4 @@
-SONJS.markdown.BOLD = function(contents){
+SONJS.markdown.DEL = function(contents){
 	contents = contents.replace(/\[d\]([\w\W]+?)\[d\]/gm, "<span style=\"text-decoration:line-through;\">$1</span>");
 	return contents;
 }

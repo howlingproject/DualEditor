@@ -1,4 +1,4 @@
 SONJS.markdown.HR = function(contents){
-	contents = contents.replace(/\[hr\]/gm, "<hr>");
+	contents = contents.replace(/^\*\*\*$/igm, "<hr>");
 	return contents;
 }
