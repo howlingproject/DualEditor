@@ -24,7 +24,7 @@
 				
 			this.hideAllDropdownColor();
 
-			var colorItems = $("<div>").addClass('dropdown-menu').css({'width':'210px'});
+			var colorItems = $("<div id='dropdownColor' >").addClass('dropdown-menu').css({'width':'210px'});
 
 			var colorLength = COLOR_BOX.colors.length;
 
@@ -57,7 +57,7 @@
 		},
 
 		hideAllDropdownColor : function () {
-			$('.dropdown-menu').remove();
+			$('#dropdownColor').remove();
 		}
 	};
 	

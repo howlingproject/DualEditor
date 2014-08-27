@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/sonjs.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -97,6 +98,7 @@ $(document).ready(function() {
 		tableEvent();
 	});
 	 
+	 //============///
 	 
 	//여기서부터 링크
 	$("#urlModal .btn-primary").on("click",function(){
@@ -268,9 +270,9 @@ function orderList( contexts ){
 </head>
 <body>
 
-<div class="container">
+<div class="container" style="padding-top: 10px;">
 	<div class="row">
-		<table class="table table-bordered">
+		<table class="sonjs-table table table-bordered" >
 			<thead>
 				<tr>
 					<th colspan="2">
@@ -414,8 +416,8 @@ function orderList( contexts ){
 			</thead>
 			<tbody>
 				<tr>
-					<td style="width: 50%">
-						<textarea class="form-control" rows="20" id="wikiEditor" name="we_wiki_text"></textarea>
+					<td style="width: 50%; padding-top: 0px;padding-left: 0px;">
+						<textarea class="sonjs form-control" rows="20" id="wikiEditor" name="we_wiki_text"></textarea>
 					</td>
 					<td id="wikimaincol" style="width: 50%">
 					
