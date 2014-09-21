@@ -34,12 +34,23 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+
+    //스크룰링 싱크
+    var $divs = $('#wikiEditor, #wikimaincol');
+    var sync = function(e){
+        var $other = $divs.not(this).off('scroll'), other = $other.get(0);
+        var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
+        other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
+        setTimeout( function(){ $other.on('scroll', sync ); },10);
+    }
+    $divs.on( 'scroll', sync);
+
 	//prettyPrint();
 	$("#wikiEditor").append("마크업 테스트\r\n***\r\n**굵게**\r\n__굵게__\r\n*기울임*\r\n_기울임_\r\n//밑줄//\r\n[d]취소선[d]\r\n[field|필드셋 타이틀]필드셋[field]\r\n[alert]경고[alert]\r\n[info]안내[info]\r\n[sp]아래첨자[sp]\r\n[sb]위첨자[sb]\r\n\r\n||셀제목1||셀제목2||셀제목3||셀제목4||\r\n|컬럼1|컬럼2|컬럼1|컬럼2|\r\n|컬럼3|컬럼4|컬럼3|컬럼4|");	
 	var editor = document.getElementById("wikiEditor");		// [object HTMLTextAreaElement]
 	
 	// 각 에디터 버튼 클릭시 액션 처리 
-	$("#btnToolbar .btn-group .btn-default").each(function(){
+	$("#btnToolbar .btn-group .btn-default btn-sm").each(function(){
 		$(this).on("click", function() {		
 			var $me = $(this);
 			var data = $me.data();
@@ -272,13 +283,13 @@ function orderList( contexts ){
 
 <div class="container" style="padding-top: 10px;">
 	<div class="row">
-		<table class="sonjs-table table table-bordered" >
+		<table class="" >
 			<thead>
 				<tr>
 					<th colspan="2">
 						<div class="btn-toolbar" id="btnToolbar">
 							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-font"></i><span class="caret"></span></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-font"></i><span class="caret"></span></button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
 										<a data-mode="font" data-before="[font|돋움]" data-center=" " data-after=" [font]" unselectable="on">
@@ -333,7 +344,7 @@ function orderList( contexts ){
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-text-height"></i><span class="caret"></span></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-text-height"></i><span class="caret"></span></button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
 										<a data-mode="font" data-before="[size|11]" data-center=" "  data-after=" [size]" unselectable="on">
@@ -358,7 +369,7 @@ function orderList( contexts ){
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="fa fa-header"></i><span class="caret"></span></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-header"></i><span class="caret"></span></button>
 								<ul class="dropdown-menu" role="menu">
 									<li>
 										<a data-mode="font" data-before="# " data-center=""  data-after="" unselectable="on">
@@ -374,40 +385,40 @@ function orderList( contexts ){
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-mode="color" data-before="color" data-center=" " data-after="color"><i class="fa fa-barcode"></i><span class="caret"></span></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" data-mode="color" data-before="color" data-center=" " data-after="color"><i class="fa fa-barcode"></i><span class="caret"></span></button>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-mode="append" data-before="**" data-center=" " data-after="**"><i class="fa fa-bold"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="_" data-center=" " data-after="_"><i class="fa fa-italic"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="//" data-center=" " data-after="//"><i class="fa fa-underline"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[d]" data-center=" " data-after="[d]"><i class="fa fa-strikethrough"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[sb]" data-center=" " data-after="[sb]"><i class="fa fa-subscript"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[sp]" data-center=" " data-after="[sp]"><i class="fa fa-superscript"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[align:left]" data-center=" " data-after="[align]"><i class="fa fa-align-left"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[align:center]" data-center=" " data-after="[align]"><i class="fa fa-align-center"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[align:right]" data-center=" " data-after="[align]"><i class="fa fa-align-right"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="**" data-center=" " data-after="**"><i class="fa fa-bold"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="_" data-center=" " data-after="_"><i class="fa fa-italic"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="//" data-center=" " data-after="//"><i class="fa fa-underline"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[d]" data-center=" " data-after="[d]"><i class="fa fa-strikethrough"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[sb]" data-center=" " data-after="[sb]"><i class="fa fa-subscript"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[sp]" data-center=" " data-after="[sp]"><i class="fa fa-superscript"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[align:left]" data-center=" " data-after="[align]"><i class="fa fa-align-left"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[align:center]" data-center=" " data-after="[align]"><i class="fa fa-align-center"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[align:right]" data-center=" " data-after="[align]"><i class="fa fa-align-right"></i></button>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-mode="insert" data-before="***" data-center="" data-after=""><i class="glyphicon glyphicon-minus"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="insert" data-before="***" data-center="" data-after=""><i class="glyphicon glyphicon-minus"></i></button>
 							</div>
 							<div class="btn-group">
 								
 							</div>		
 							<div class="btn-group">
-								<button type="button" class="btn btn-default" data-mode="append" data-before="* " data-center=" " data-after=""><i class="fa fa-list-ul"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="1. " data-center=" " data-after=""><i class="fa fa-list-ol"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[syntax]" data-center=""  data-after="[syntax]"><i class="fa fa-code"></i></button>
-								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#tableModal" data-mode="layer" data-type="table"><i class="fa fa-table"></i></button>
-								<!-- <button type="button" class="btn btn-default" data-mode="append" data-before="[note|" data-center="각주"  data-after="#설명]">각주</button> -->
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[field|타이틀]" data-center=""  data-after="[field]"><i class="fa fa-credit-card"></i></button>
-								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#urlModal" data-mode="layer" data-type="url" ><i class="fa fa-link"></i></button>
-								<button type="button" class="btn btn-default" data-toggle="modal" data-target="#imgModal" data-mode="layer" data-type="img" ><i class="fa fa-file-image-o"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="* " data-center=" " data-after=""><i class="fa fa-list-ul"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="1. " data-center=" " data-after=""><i class="fa fa-list-ol"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[syntax]" data-center=""  data-after="[syntax]"><i class="fa fa-code"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#tableModal" data-mode="layer" data-type="table"><i class="fa fa-table"></i></button>
+								<!-- <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[note|" data-center="각주"  data-after="#설명]">각주</button> -->
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[field|타이틀]" data-center=""  data-after="[field]"><i class="fa fa-credit-card"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#urlModal" data-mode="layer" data-type="url" ><i class="fa fa-link"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#imgModal" data-mode="layer" data-type="img" ><i class="fa fa-file-image-o"></i></button>
 								
-								<!-- <button type="button" class="btn btn-default" >차트</button> -->
-								<button type="button" class="btn btn-default" data-mode="append" data-before="[alert]" data-center=" " data-after="[alert]"><i class="fa fa-exclamation-triangle"></i></button>
-								<button type="button" class="btn btn-default" data-mode="append"  data-before="[info]"  data-center=" "  data-after="[info]"><i class="fa fa-info"></i></button>
+								<!-- <button type="button" class="sonwiki-btn btn btn-default btn-sm" >차트</button> -->
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[alert]" data-center=" " data-after="[alert]"><i class="fa fa-exclamation-triangle"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append"  data-before="[info]"  data-center=" "  data-after="[info]"><i class="fa fa-info"></i></button>
 								
-								<button type="button" class="btn btn-default" ><i class="fa fa-lightbulb-o"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" ><i class="fa fa-lightbulb-o"></i></button>
 								
 							</div>
 						</div>
@@ -417,10 +428,13 @@ function orderList( contexts ){
 			<tbody>
 				<tr>
 					<td style="width: 50%; padding-top: 0px;padding-left: 0px;">
-						<textarea class="sonjs form-control" rows="20" id="wikiEditor" name="we_wiki_text"></textarea>
+						<textarea class="sonjs form-control" rows="20" id="wikiEditor" name="we_wiki_text" style="overflow: scroll; height: 200px;"></textarea>
 					</td>
-					<td id="wikimaincol" style="width: 50%">
-					
+					<td style="width: 50%; padding-top: 10px;padding-left: 10px;">
+					    <div id="wikimaincol" style="border: 1px; overflow: scroll; height: 200px;">
+
+
+					    </div>
 					</td>
 				</tr>
 			</tbody>
@@ -451,7 +465,7 @@ function orderList( contexts ){
 			</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="aaa">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
@@ -479,7 +493,7 @@ function orderList( contexts ){
 			</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="aaa">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
@@ -508,7 +522,7 @@ function orderList( contexts ){
        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="ok">Save changes</button>
       </div>
     </div><!-- /.modal-content -->

@@ -18,4 +18,8 @@
 }
 .sonjs-table > thead {
 	background-color: #eee;
-} 
+}
+
+div button.sonwiki-btn {
+  background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+}
