@@ -30,20 +30,20 @@ var SONJS = (function(){
 	
 	
 	SONJS.append = function(){
-		loadJQuery("js/sonjs/sonjs-markup-FONT.js");
-		loadJQuery("js/sonjs/sonjs-markup-ALIGN.js");
-		loadJQuery("js/sonjs/sonjs-markup-BOLD.js");
-		loadJQuery("js/sonjs/sonjs-markup-ITALIC.js");
-		loadJQuery("js/sonjs/sonjs-markup-DEL.js");
-		loadJQuery("js/sonjs/sonjs-markup-UNDERLINING.js");
-		loadJQuery("js/sonjs/sonjs-markup-SUPERSCRIPT.js");
-		loadJQuery("js/sonjs/sonjs-markup-SUBERSCRIPT.js");
-		loadJQuery("js/sonjs/sonjs-markup-H1.js");
-		loadJQuery("js/sonjs/sonjs-markup-HR.js");
-		loadJQuery("js/sonjs/sonjs-markup-FIELD.js");
-		loadJQuery("js/sonjs/sonjs-markup-ALERT.js");
-		loadJQuery("js/sonjs/sonjs-markup-INFO.js");
-		loadJQuery("js/sonjs/sonjs-markup-LINK.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-FONT.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-ALIGN.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-BOLD.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-ITALIC.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-DEL.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-UNDERLINING.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-SUPERSCRIPT.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-SUBERSCRIPT.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-H1.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-HR.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-FIELD.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-ALERT.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-INFO.js");
+		loadJQuery("js/sonjs/module/sonjs-markup-LINK.js");
 	};
 	SONJS.append();
 	

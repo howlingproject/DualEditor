@@ -10,11 +10,11 @@
 <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
-<script type="text/javascript" src="js/fn-editor-util.js"></script>
-<script type="text/javascript" src="js/fn-layer-select.js"></script>
-<script type="text/javascript" src="js/fn-editor-selector-v4.js"></script>
-<script type="text/javascript" src="js/fn-editor.js"></script>
-<script type="text/javascript" src="js/fn-son-markdown.js"></script>
+<script type="text/javascript" src="js/sonjs/util/fn-editor-util.js"></script>
+<script type="text/javascript" src="js/sonjs/util/fn-editor-layer.js"></script>
+<script type="text/javascript" src="js/sonjs/util/fn-block-range.js"></script>
+<script type="text/javascript" src="js/sonjs/util/fn-editor.js"></script>
+<script type="text/javascript" src="js/sonjs/fn-son-markdown.js"></script>
 
 <style type="text/css">
 .geditor_dropdown a:hover {
@@ -51,7 +51,7 @@ $(document).ready(function() {
 	var editor = document.getElementById("wikiEditor");		// [object HTMLTextAreaElement]
 	
 	// 각 에디터 버튼 클릭시 액션 처리 
-	$("#btnToolbar .btn-group .btn-default btn-sm").each(function(){
+	$("#btnToolbar .btn-group .btn-sm").each(function(){
 		$(this).on("click", function() {		
 			var $me = $(this);
 			var data = $me.data();
@@ -374,13 +374,13 @@ function orderList( contexts ){
 								<ul class="dropdown-menu" role="menu">
 									<li>
 										<a data-mode="font" data-before="# " data-center=""  data-after="" unselectable="on">
-											<span style="font-size:18px;" unselectable="on">h1. 큰 헤드라인</h1>
+											<span style="font-size:18px;" unselectable="on"><h1>h1. 큰 헤드라인</h1></span>
 										</a>
 										<a data-mode="font" data-before="## " data-center=""  data-after="" unselectable="on">
-											<span style="font-size:14px;" unselectable="on">h2. 중간 헤드라인</h2>
+											<span style="font-size:14px;" unselectable="on"><h2>h2. 중간 헤드라인</h2></span>
 										</a>
 										<a data-mode="font" data-before="### " data-center=""  data-after="" unselectable="on">
-											<span style="font-size:12px;" unselectable="on">h3. 작은 헤드라인</h3>
+											<span style="font-size:12px;" unselectable="on"><h3>h3. 작은 헤드라인</h3></span>
 										</a>
 									</li>
 								</ul>

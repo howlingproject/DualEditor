@@ -21,7 +21,7 @@
 	jQuery.layer_select.color = {
 
 		dropdownColor : function ( textEditor, $me, data ) {
-				
+
 			this.hideAllDropdownColor();
 
 			var colorItems = $("<div id='dropdownColor' >").addClass('dropdown-menu').css({'width':'210px'});
@@ -31,7 +31,7 @@
 			for( var i=0 ; i < colorLength ; i += 1) {
 				var color = COLOR_BOX.colors[i];
 				var swatch = $('<a rel="' + color + '" href="javascript:void(null);" class="geditor_color_link" ></a>').css({ 'backgroundColor': color });
-				
+
 				swatch.on('click', function (e) {
 					e.preventDefault();
 					var $me = $(this);
@@ -41,17 +41,17 @@
 							'center' : data.center,
 							'after' : '[' + data.after + ']'
 						});
-					
+
 					$.appendTag( textEditor, $me, param );
 				});
-				
+
 				colorItems.append(swatch);
 
 			}
-			
+
 			var top = $me.offset().top;
 			var left = $me.offset().left;
-			
+
 			colorItems.appendTo($me.parent());
 
 		},
@@ -60,5 +60,59 @@
 			$('#dropdownColor').remove();
 		}
 	};
+
+    jQuery.layer_select.table = {
+
+        open : function ( textEditor, $me, data ) {
+
+            //오케이 했을시 마크업
+            $("#tableModal #ok").on("click",function(){
+                var html = '';
+                html += "||셀제목";
+                html += "||셀제목";
+                html += "|| \n";
+
+                $("#tableModal #tableHYdiv form").each(function(){
+                    $(this).find('input').each(function(){
+                        html += "|" + $(this).val();
+                        $(this).val("");
+                    });
+                    html += "| \n"
+                });
+
+                $.textInsert(editor, html, "", "" );
+                $('#tableModal').modal('hide');
+            });
+
+            // 행삭제
+            this.tableEvent();
+
+            //행적용
+            $("#tableHYform").find("button").on("click", function(){
+                var hh = $(this).parent().find("input")[0].value;
+                var yy = $(this).parent().find("input")[1].value;
+                $("#tableHYdiv").empty();
+                $("#tableHYdiv").html( tableEach( hh, yy ) );
+                this.tableEvent();
+            });
+
+        },
+
+        tableEnvent : function(){
+            $("#tableModal #tableHYdiv form").each(function(){
+                $(this).find("button").on("click",function(){
+                    $(this).parent().remove();
+                });
+            });
+        }
+    };
+
+    jQuery.layer_select.link = {
+
+        open : function ( textEditor, $me, data ) {
+
+        }
+    };
+
 	
 })(jQuery);
