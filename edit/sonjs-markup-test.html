@@ -77,38 +77,6 @@ $(document).ready(function() {
 	}, 1000);
 
 
-	//여기서부터 테이블
-	
-	//오케이 했을시 마크업
-	$("#tableModal #ok").on("click",function(){
-		var html = '';
-		html += "||셀제목";
-		html += "||셀제목";
-		html += "|| \n";
-
-		$("#tableModal #tableHYdiv form").each(function(){
-			$(this).find('input').each(function(){ 
-				html += "|" + $(this).val();
-				$(this).val("");
-			});
-			html += "| \n"
-		});
-		
-		$.textInsert(editor, html, "", "" );
-		$('#tableModal').modal('hide');
-	});
-	 
-	// 행삭제
-	tableEvent();
-	 
-	//행적용
-	$("#tableHYform").find("button").on("click", function(){
-		var hh = $(this).parent().find("input")[0].value;
-		var yy = $(this).parent().find("input")[1].value;
-		$("#tableHYdiv").empty();
-		$("#tableHYdiv").html( tableEach( hh, yy ) );
-		tableEvent();
-	});
 	 
 	 //============///
 	 
@@ -138,28 +106,6 @@ $(document).ready(function() {
 	
 });
 
-// 행삭제
-function tableEvent(){
-	$("#tableModal #tableHYdiv form").each(function(){
-		$(this).find("button").on("click",function(){
-			$(this).parent().remove(); 
-		});
-	});
-}
-
-function tableEach(hh, yy){
-	 var html = "";
-	 for( var h=0; h < hh; h++ ){
-		 html += "<form class=\"form-inline\" role=\"form\">\n";
-		 for( var y=0; y < yy; y++ ){
-			 html += "<div class=\"form-group\">\n";
-			 html += "<input type=\"text\" class=\"form-control\">\n";
-			 html += "</div>\n";
-		 }
-		 html += "<button type=\"button\" class=\"btn btn-primary\">행삭제</button>\n</form>\n";			 
-	 }
-	 return html;
-}
 
 function tableRex( contexts ){
 	if( contexts == null ){
@@ -409,7 +355,7 @@ function orderList( contexts ){
 								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="* " data-center=" " data-after=""><i class="fa fa-list-ul"></i></button>
 								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="1. " data-center=" " data-after=""><i class="fa fa-list-ol"></i></button>
 								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[syntax]" data-center=""  data-after="[syntax]"><i class="fa fa-code"></i></button>
-								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#tableModal" data-mode="layer" data-type="table"><i class="fa fa-table"></i></button>
+								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#tableModal" data-mode="table" data-type="table"><i class="fa fa-table"></i></button>
 								<!-- <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[note|" data-center="각주"  data-after="#설명]">각주</button> -->
 								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-mode="append" data-before="[field|타이틀]" data-center=""  data-after="[field]"><i class="fa fa-credit-card"></i></button>
 								<button type="button" class="sonwiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#urlModal" data-mode="layer" data-type="url" ><i class="fa fa-link"></i></button>
@@ -501,34 +447,6 @@ function orderList( contexts ){
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-<div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-       
-		<form class="form-inline" id="tableHYform" role="form">
-			<div class="form-group">
-				<input type="number" class="form-control"> 행 x
-			</div>
-			<div class="form-group">
-				<input type="number" class="form-control"> 열
-			</div>
-			<button type="button" class="btn btn-primary">적용</button>
-		</form>
-       <hr>
-       
-       <div id="tableHYdiv">
-       </div>
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="sonwiki-btn btn btn-default btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="ok">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 </body>
 </html>

@@ -13,8 +13,7 @@
 			
 	};	
 	
-	jQuery.layer_select = function(){
-	};
+	jQuery.layer_select = function(){};
 	/**
 	 * 사용자 프로필 레이어 팝업을 출력한다. 
 	 */
@@ -65,46 +64,62 @@
 
         open : function ( textEditor, $me, data ) {
 
-            //오케이 했을시 마크업
-            $("#tableModal #ok").on("click",function(){
+        	this.hideTable();
+        	
+        	var table = $("<div class='modal fade' id='tableModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>   <div class='modal-dialog'>     <div class='modal-content'>       <div class='modal-body'>         		<form class='form-inline' id='tableHYform' role='form'> 			<div class='form-group'> 				<input type='number' class='form-control'> 행 x 			</div> 			<div class='form-group'> 				<input type='number' class='form-control'> 열 			</div> 			<button type='button' class='btn btn-primary'>적용</button> 		</form>        <hr>                <div id='tableHYdiv'>        </div>               </div>       <div class='modal-footer'>         <button type='button' class='sonwiki-btn btn btn-default btn-sm' data-dismiss='modal'>Close</button>         <button type='button' class='btn btn-primary' id='ok'>Save changes</button>       </div>     </div>   </div> </div>  ");
+        	
+        	//테이블적용
+        	table.find('#ok').on("click",function(){
                 var html = '';
                 html += "||셀제목";
                 html += "||셀제목";
                 html += "|| \n";
-
-                $("#tableModal #tableHYdiv form").each(function(){
+                
+        		this.end().find('#tableHYdiv').each(function(){
                     $(this).find('input').each(function(){
                         html += "|" + $(this).val();
                         $(this).val("");
                     });
                     html += "| \n"
                 });
-
-                $.textInsert(editor, html, "", "" );
-                $('#tableModal').modal('hide');
-            });
-
-            // 행삭제
-            this.tableEvent();
+        		
+        		$.textInsert(editor, html, "", "" );
+        	});
 
             //행적용
-            $("#tableHYform").find("button").on("click", function(){
+        	table.find('#tableHYform').find("button").on("click", function(){
                 var hh = $(this).parent().find("input")[0].value;
                 var yy = $(this).parent().find("input")[1].value;
-                $("#tableHYdiv").empty();
-                $("#tableHYdiv").html( tableEach( hh, yy ) );
-                this.tableEvent();
+                this.end().find("#tableHYdiv").empty();
+                
+              	 var html = "";
+               	 for( var h=0; h < hh; h++ ){
+               		 html += "<form class=\"form-inline\" role=\"form\">\n";
+               		 for( var y=0; y < yy; y++ ){
+               			 html += "<div class=\"form-group\">\n";
+               			 html += "<input type=\"text\" class=\"form-control\">\n";
+               			 html += "</div>\n";
+               		 }
+               		 html += "<button type=\"button\" class=\"btn btn-primary\">행삭제</button>\n</form>\n";			 
+               	 }
+                
+                this.end().find("#tableHYdiv").html( html );
+                this.tableEvent(this);
             });
 
         },
 
-        tableEnvent : function(){
-            $("#tableModal #tableHYdiv form").each(function(){
+        tableEnvent : function(item){
+        	item.end().find("#tableHYdiv form").each(function(){
                 $(this).find("button").on("click",function(){
                     $(this).parent().remove();
                 });
             });
         }
+        
+        hideTable : function () {
+			$('#tableModal').remove();
+		}
     };
 
     jQuery.layer_select.link = {
