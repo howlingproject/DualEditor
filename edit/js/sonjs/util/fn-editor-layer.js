@@ -1,3 +1,4 @@
+var jisung;
 (function() 
 {
 	
@@ -75,47 +76,51 @@
                 html += "||셀제목";
                 html += "|| \n";
                 
-        		this.end().find('#tableHYdiv').each(function(){
+                $(this).parent().parent().find('#tableHYdiv').each(function(){
                     $(this).find('input').each(function(){
                         html += "|" + $(this).val();
                         $(this).val("");
                     });
                     html += "| \n"
                 });
-        		
-        		$.textInsert(editor, html, "", "" );
+        		jisung = [textEditor, html];
+        		$.textInsert(textEditor, html, "", "" );
         	});
 
             //행적용
         	table.find('#tableHYform').find("button").on("click", function(){
                 var hh = $(this).parent().find("input")[0].value;
                 var yy = $(this).parent().find("input")[1].value;
-                this.end().find("#tableHYdiv").empty();
-                
-              	 var html = "";
-               	 for( var h=0; h < hh; h++ ){
-               		 html += "<form class=\"form-inline\" role=\"form\">\n";
-               		 for( var y=0; y < yy; y++ ){
-               			 html += "<div class=\"form-group\">\n";
-               			 html += "<input type=\"text\" class=\"form-control\">\n";
-               			 html += "</div>\n";
-               		 }
-               		 html += "<button type=\"button\" class=\"btn btn-primary\">행삭제</button>\n</form>\n";			 
-               	 }
-                
-                this.end().find("#tableHYdiv").html( html );
-                this.tableEvent(this);
+                $(this).parent().parent().find("#tableHYdiv").empty();
+               	$(this).parent().parent().find("#tableHYdiv").append( $.layer_select.table.tableSetHtml(hh,yy) );
+               	$.layer_select.table.tableEnvent(this);
             });
+        	
+        	table.appendTo($me.parent());
 
         },
 
         tableEnvent : function(item){
-        	item.end().find("#tableHYdiv form").each(function(){
+        	$(item).parent().parent().find("#tableHYdiv form").each(function(){
                 $(this).find("button").on("click",function(){
                     $(this).parent().remove();
                 });
             });
-        }
+        },
+        
+        tableSetHtml : function(hh, yy){
+        	var html = "";
+         	 for( var h=0; h < hh; h++ ){
+         		 html += "<form class=\"form-inline\" role=\"form\">\n";
+         		 for( var y=0; y < yy; y++ ){
+         			 html += "<div class=\"form-group\">\n";
+         			 html += "<input type=\"text\" class=\"form-control\">\n";
+         			 html += "</div>\n";
+         		 }
+         		 html += "<button type=\"button\" class=\"btn btn-primary\">행삭제</button>\n</form>\n";			 
+         	 }
+         	return html;
+        },
         
         hideTable : function () {
 			$('#tableModal').remove();

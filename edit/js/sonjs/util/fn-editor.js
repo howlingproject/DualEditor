@@ -23,9 +23,13 @@
 			$.appendTag(textEditor, $me, data);
 		} else if(data.mode == 'color') {
 			$.layer_select.color.dropdownColor(textEditor, $me, data);
-		} else if(data.mode == 'table') {
-			$.layer_select.table.open(textEditor, $me, data);
 		} else if(data.mode == 'layer') {
+			
+			if( data.type == 'table' ){
+				$.layer_select.table.open(textEditor, $me, data);	
+			}else if( data.type == 'link' ){
+				$.layer_select.link.open(textEditor, $me, data);
+			}
 			// 현재 커서 위치에 레이어 입력 태그를 추가한다.
 			/*
 			if (document.selection) { //IE
