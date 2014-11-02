@@ -17,7 +17,8 @@ var SONJS = (function(){
 		contents = SONJS.markdown.UNDERLINING( contents );
 		contents = SONJS.markdown.SUPERSCRIPT( contents );
 		contents = SONJS.markdown.SUBERSCRIPT( contents );
-		
+
+        contents = SONJS.markdown.LAYOUT( contents );
 		contents = SONJS.markdown.FIELD( contents );
 		contents = SONJS.markdown.ALERT( contents );
 		contents = SONJS.markdown.INFO( contents );
@@ -44,6 +45,7 @@ var SONJS = (function(){
 		loadJQuery("js/sonjs/module/sonjs-markup-ALERT.js");
 		loadJQuery("js/sonjs/module/sonjs-markup-INFO.js");
 		loadJQuery("js/sonjs/module/sonjs-markup-LINK.js");
+        loadJQuery("js/sonjs/module/sonjs-markup-LAYOUT.js");
 	};
 	SONJS.append();
 	
