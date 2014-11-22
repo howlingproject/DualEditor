@@ -35,47 +35,42 @@ var jisung;
 				swatch.on('click', function (e) {
 					e.preventDefault();
 					var $me = $(this);
-					var tagColor = $me.attr('rel').replace('#','');
-					var param = ({
-							'before' : '[' + data.before + '|' + tagColor + ']',
-							'center' : data.center,
-							'after' : '[' + data.after + ']'
-						});
+					var tagColor = $me.attr('rel').replac
 
-					$.appendTag( textEditor, $me, param );
-				});
+                    $.appendTag( textEditor, $me, param );
+                });
 
-				colorItems.append(swatch);
+                colorItems.append(swatch);
 
-			}
+            }
 
-			var top = $me.offset().top;
-			var left = $me.offset().left;
+            var top = $me.offset().top;
+            var left = $me.offset().left;
 
-			colorItems.appendTo($me.parent());
+            colorItems.appendTo($me.parent());
 
-		},
+        },
 
-		hideAllDropdownColor : function () {
-			$('#dropdownColor').remove();
-		}
-	};
+        hideAllDropdownColor : function () {
+            $('#dropdownColor').remove();
+        }
+    };
 
     jQuery.layer_select.table = {
 
         open : function ( textEditor, $me, data ) {
 
-        	this.hideTable();
-        	
-        	var table = $("<div class='modal fade' id='tableModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>   <div class='modal-dialog'>     <div class='modal-content'>       <div class='modal-body'>         		<form class='form-inline' id='tableHYform' role='form'> 			<div class='form-group'> 				<input type='number' class='form-control'> 행 x 			</div> 			<div class='form-group'> 				<input type='number' class='form-control'> 열 			</div> 			<button type='button' class='btn btn-primary'>적용</button> 		</form>        <hr>                <div id='tableHYdiv'>        </div>               </div>       <div class='modal-footer'>         <button type='button' class='sonwiki-btn btn btn-default btn-sm' data-dismiss='modal'>Close</button>         <button type='button' class='btn btn-primary' id='ok'>Save changes</button>       </div>     </div>   </div> </div>  ");
-        	
-        	//테이블적용
-        	table.find('#ok').on("click",function(){
+            this.hideTable();
+
+            var table = $("<div class='modal fade' id='tableModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>   <div class='modal-dialog'>     <div class='modal-content'>       <div class='modal-body'>         		<form class='form-inline' id='tableHYform' role='form'> 			<div class='form-group'> 				<input type='number' class='form-control'> 행 x 			</div> 			<div class='form-group'> 				<input type='number' class='form-control'> 열 			</div> 			<button type='button' class='btn btn-primary'>적용</button> 		</form>        <hr>                <div id='tableHYdiv'>        </div>               </div>       <div class='modal-footer'>         <button type='button' class='sonwiki-btn btn btn-default btn-sm' data-dismiss='modal'>Close</button>         <button type='button' class='btn btn-primary' id='ok'>Save changes</button>       </div>     </div>   </div> </div>  ");
+
+            //테이블적용
+            table.find('#ok').on("click",function(){
                 var html = '';
                 html += "||셀제목";
                 html += "||셀제목";
                 html += "|| \n";
-                
+
                 $(this).parent().parent().find('#tableHYdiv').each(function(){
                     $(this).find('input').each(function(){
                         html += "|" + $(this).val();
@@ -83,34 +78,39 @@ var jisung;
                     });
                     html += "| \n"
                 });
-        		jisung = [textEditor, html];
-        		$.textInsert(textEditor, html, "", "" );
-        	});
+                jisung = [textEditor, html];
+                $.textInsert(textEditor, html, "", "" );
+            });
 
             //행적용
-        	table.find('#tableHYform').find("button").on("click", function(){
+            table.find('#tableHYform').find("button").on("click", function(){
                 var hh = $(this).parent().find("input")[0].value;
                 var yy = $(this).parent().find("input")[1].value;
                 $(this).parent().parent().find("#tableHYdiv").empty();
-               	$(this).parent().parent().find("#tableHYdiv").append( $.layer_select.table.tableSetHtml(hh,yy) );
-               	$.layer_select.table.tableEnvent(this);
+                $(this).parent().parent().find("#tableHYdiv").append( $.layer_select.table.tableSetHtml(hh,yy) );
+                $.layer_select.table.tableEnvent(this);
             });
-        	
-        	table.appendTo($me.parent());
+
+            table.appendTo($me.parent());
 
         },
 
         tableEnvent : function(item){
-        	$(item).parent().parent().find("#tableHYdiv form").each(function(){
+            $(item).parent().parent().find("#tableHYdiv form").each(function(){
                 $(this).find("button").on("click",function(){
                     $(this).parent().remove();
                 });
             });
         },
-        
+
         tableSetHtml : function(hh, yy){
-        	var html = "";
-         	 for( var h=0; h < hh; h++ ){
+            var html = "";
+            for( var h=0; h < hh; h++ ){e('#','');
+					var param = ({
+							'before' : '[' + data.before + '|' + tagColor + ']',
+							'center' : data.center,
+							'after' : '[' + data.after + ']'
+						});
          		 html += "<form class=\"form-inline\" role=\"form\">\n";
          		 for( var y=0; y < yy; y++ ){
          			 html += "<div class=\"form-group\">\n";
