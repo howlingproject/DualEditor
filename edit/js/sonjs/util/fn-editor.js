@@ -27,7 +27,7 @@
 			
 			if( data.type == 'table' ){
 				$.layer_select.table.open(textEditor, $me, data);	
-			}else if( data.type == 'link' ){
+			}else if( data.type == 'url' ){
 				$.layer_select.link.open(textEditor, $me, data);
 			}else if( data.type == 'img' ){
 				$.layer_select.img.open(textEditor, $me, data);

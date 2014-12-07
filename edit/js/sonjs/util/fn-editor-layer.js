@@ -133,7 +133,7 @@ var jisung;
 
         	this.hideLink();
         	
-        	var link = $("<div class=\"modal fade\" id=\"linkModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">   <div class=\"modal-dialog\">     <div class=\"modal-content\">     	<div class=\"modal-header\"> 			<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button> 			<h4 class=\"modal-title\">Insert Link</h4>     	</div>      	<div class=\"modal-body\"> 			<form class=\"form\" role=\"form\"> 				<div class=\"form-group\"> 					<label for=\"exampleInputLinkText\">Link Text</label> 					<input type=\"text\" class=\"form-control\" id=\"linkText\" placeholder=\"Link Text\"> 				</div> 				<div class=\"form-group\"> 					<label for=\"exampleInputURL\">URL</label> 					<input type=\"text\" class=\"form-control\" id=\"linkUrl\" placeholder=\"URL\"> 				</div> 			</form>       </div>       <div class=\"modal-footer\">         <button type=\"button\" class=\"sonwiki-btn btn btn-default btn-sm\" data-dismiss=\"modal\">Close</button>         <button type=\"button\" class=\"btn btn-primary\" id=\"ok\">Save changes</button>       </div>     </div>   </div> </div> ");
+        	var link = $("<div class=\"modal fade\" id=\"urlModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">   <div class=\"modal-dialog\">     <div class=\"modal-content\">     	<div class=\"modal-header\"> 			<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">×</button> 			<h4 class=\"modal-title\">Insert Link</h4>     	</div>      	<div class=\"modal-body\"> 			<form class=\"form\" role=\"form\"> 				<div class=\"form-group\"> 					<label for=\"exampleInputLinkText\">Link Text</label> 					<input type=\"text\" class=\"form-control\" id=\"linkText\" placeholder=\"Link Text\"> 				</div> 				<div class=\"form-group\"> 					<label for=\"exampleInputURL\">URL</label> 					<input type=\"text\" class=\"form-control\" id=\"linkUrl\" placeholder=\"URL\"> 				</div> 			</form>       </div>       <div class=\"modal-footer\">         <button type=\"button\" class=\"sonwiki-btn btn btn-default btn-sm\" data-dismiss=\"modal\">Close</button>         <button type=\"button\" class=\"btn btn-primary\" id=\"ok\">Save changes</button>       </div>     </div>   </div> </div> ");
         
         	//여기서부터 링크
         	link.find('#ok').on("click",function(){
@@ -149,7 +149,7 @@ var jisung;
         },
         
         hideLink : function () {
-			$('#linkModal').remove();
+			$('#urlModal').remove();
 		}
     };
     
