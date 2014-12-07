@@ -1,4 +1,4 @@
-SONJS.markdown.FONT = function(contents){
+SONJS.markup.FONT = function(contents){
 	var rex = /\[font\|(.*?)\]([\w\W]+?)\[font\]/gm;
 	if( contents.match(rex) == null ) return contents;
 	var font = contents.match(rex).toString().replace(rex, "$1");
@@ -18,12 +18,12 @@ SONJS.markdown.FONT = function(contents){
 	return contents;
 }
 
-SONJS.markdown.FONTSIZE = function(contents){
+SONJS.markup.FONTSIZE = function(contents){
 	contents = contents.replace(/\[size\|(.*?)\]([\w\W]+?)\[size\]/igm, "<span style=\"font-size: $1px;\">$2\r\n</span>");
 	return contents;
 }
 
-SONJS.markdown.FONTSTYLE = function(contents){
+SONJS.markup.FONTSTYLE = function(contents){
 	var rex = /(h1\.(\s{0,}))(.*)?/igm;
 	if( contents.match(rex) != null ){
 		contents = contents.replace(rex, "<h2>$3</h2>");

@@ -1,4 +1,4 @@
-SONJS.markdown.TABLE = function(contents){
+SONJS.markup.TABLE = function(contents){
     var editText = contents;
 
     var regTitle = /^\|\|(.*)\|\|/igm;
