@@ -1,105 +1,52 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/sonjs.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-<style>
-/* loading */
-.wrap_layer { position: absolute; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; }
-.wrap_layer .bg { width: 100%; height: 100%; background-color: #000; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0.5); opacity: 0.5; }
-.layer-wiki { position: absolute; z-index: 10000; width: 500px; background-color: #eee; }
-.layer-wiki .head { padding: 10px 20px; background-color: #7f7f7f; color: #fff; z-index: 10000;}
-.layer-wiki .head h3 { margin: 0; padding: 0; }
-.layer-wiki .body { padding: 20px 20px 0; border-width: 0 1px; border-style: solid; border-color: #7f7f7f; z-index: 10000;}
-.layer-wiki .body input[type="text"], .layer-wiki .body textarea { padding: 5px; border-width: 1px; border-style: solid; border-color: #abadb3 #dbdfe6 #e3e9ef #e2e3ea; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; background-color: #fff; }
-.layer-wiki .body table { width: 100%; }
-.layer-wiki .body table th { font-weight: normal; text-align: left; }
-.layer-wiki .foot { padding: 10px 0; border-width: 0 1px 1px; border-style: solid; border-color: #7f7f7f; text-align: center; z-index: 10000;}
-.layer-wiki.table .body h4 { margin: 20px 0 10px; padding: 0; }
-.layer-wiki.table .body h4:first-child { margin-top: 0; }
-.layer-wiki.table .body .row { padding: 0 20px; }
-.layer-wiki.table .body .preview { overflow-y: auto; max-height: 200px; margin: 20px 0 0; }
-.layer-wiki.table .body .preview .row { margin: 5px 0; padding: 5px 20px; background-color: #ddd; }
-.layer-wiki.table .body .preview .cel { width: 80px; height: 2.2em; resize: auto; vertical-align: bottom; }
-.layer-wiki.table .body .btn-table { padding: 5px 10px; margin-left: 10px; border: 0 none; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-weight: bold; color: #fff; background-color: #666; }
-.btn-table { padding: 5px 10px; margin-left: 10px; border: 0 none; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; font-weight: bold; color: #fff; background-color: #666; }
+    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 
-#loadLayer { position: absolute; top: 20%; left: 20%; width: 500px; height: auto; margin: -12px 0 0 -12px; background: none; z-index: 6500; }
-</style>
+    <script type="text/javascript" src="js/sonjs/fn-son-markup.js"></script>
 
-<script src="https://ssl.gstatic.com/codesite/ph/11512667522589661435/js/prettify/prettify.js"></script>
-<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="js/sonjs/util/fn-editor-util.js"></script>
-<script type="text/javascript" src="js/sonjs/util/fn-block-range.js"></script>
-<script type="text/javascript" src="js/sonjs/util/fn-editor.js"></script>
-<script type="text/javascript" src="js/sonjs/fn-son-markdown.js"></script>
+    <style type="text/css">
+        .geditor_dropdown a:hover {
+            color: #444 !important;
+            text-decoration: none;
+            background-color: #dde4ef;
+        }
+        .geditor_color_link {
+            padding: 0 !important;
+            width: 15px !important;
+            height: 15px !important;
+            float: left !important;
+            border: 2px solid #fff !important;
+            font-size: 0;
+        }
+    </style>
 
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function() {
 
-	//prettyPrint();
-	$("#wikiEditor").append("마크업 테스트\r\n[hr]\r\n**굵게**\r\n//기울임//\r\n__밑줄__\r\n[d]취소선[d]\r\n[sb]아래첨자[sb]\r\n[sp]위첨자[sp]\r\n[field|필드셋 타이틀]필드셋[field]\r\n[alert]경고[alert]\r\n[info]안내[info]\r\n");	
-	var editor = document.getElementById("wikiEditor");		// [object HTMLTextAreaElement]
-	
-	// 각 에디터 버튼 클릭시 액션 처리 
-	$('.e-tb-btn').each(function(){
-		$(this).on("click", function() {		
-			var $me = $(this);
-			var data = $me.data();
-			
-			// 에디터 액션 처리
-			$.editorAction(editor, $me, data);
-		});
-	});
-	
-	setInterval(function() {
-		$("#wikimaincol").text("");
-		var txt = SONJS.markdown( $("#wikiEditor").val() ); 
-		$("#wikimaincol").append( txt ); 
-	}, 1000);
-	
-	
-});
-  
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            SONJS.setting($("#test"));
+
+        });
+
+    </script>
+
+    <title>GliderWiki wiki view</title>
 </head>
 <body>
-	<h3>Insert Mode, Append Mode 기능 추가</h3>
-	<div class="e-toolbar">
-	<input type="button" class="e-tb-btn" value="굵게" id="bold" data-mode="append" data-before="**" data-center=" " data-after="**" />
-	<input type="button" class="e-tb-btn" value="기울임" id="italic" data-mode="append" data-before="//" data-center=" " data-after="//" />
-	<input type="button" class="e-tb-btn" value="밑줄" id="underline" data-mode="append" data-before="__" data-center=" " data-after="__" />
-	<input type="button" class="e-tb-btn" value="취소선" id="strike" data-mode="append" data-before="[d]" data-center=" " data-after="[d]" />
-	<input type="button" class="e-tb-btn" value="아래첨자" id="sub" data-mode="append" data-before="[sb]" data-center=" " data-after="[sb]" />
-	<input type="button" class="e-tb-btn" value="위첨자" id="sup" data-mode="append" data-before="[sp]" data-center=" " data-after="[sp]" />
-	<br />
-	<input type="button" class="e-tb-btn" value="구분선" id="line" data-mode="insert" data-before="[hr]" data-center="" data-after="" />
-	<input type="button" class="e-tb-btn" value="필드셋" id="fieldset" data-mode="append" data-before="[field|타이틀]" data-center=""  data-after="[field]" />
-	<input type="button" class="e-tb-btn" value="경고" id="alert" data-mode="append" data-before="[alert]" data-center=" " data-after="[alert]" />
-	<input type="button" class="e-tb-btn" value="안내" id="info" data-mode="append"  data-before="[info]"  data-center=" "  data-after="[info]" />
-	
-	
-	</div>
-	
-	<form name="aform">
-		<textarea id="wikiEditor" name="we_wiki_text" rows="20" cols="70"></textarea> 
-	</form>
-	
-	<br /><br /><br />
-	<div id="wikipreview">
-		<table border="0" cellspacing="0" cellpadding="0">
-			<tbody>
-				<tr>
-					<td class="sidebarcontent"></td>
-					<td class="vt" id="wikimaincol">
-						
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
- 	
+
+<div class="container" style="padding-top: 10px;">
+    <div id="test" class="row">
+    </div>
+</div>
+
+
 </body>
 </html>

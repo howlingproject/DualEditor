@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/sonjs/util/fn-editor-layer.js"></script>
 <script type="text/javascript" src="js/sonjs/util/fn-block-range.js"></script>
 <script type="text/javascript" src="js/sonjs/util/fn-editor.js"></script>
-<script type="text/javascript" src="js/sonjs/fn-son-markdown.js"></script>
+<script type="text/javascript" src="js/sonjs/fn-son-markup.js"></script>
 
 <style type="text/css">
 .geditor_dropdown a:hover {
@@ -51,7 +51,7 @@ $(document).ready(function() {
 	var editor = document.getElementById("wikiEditor");		// [object HTMLTextAreaElement]
 	
 	// 각 에디터 버튼 클릭시 액션 처리 
-	$("#btnToolbar .btn-group .btn-sm").each(function(){
+	$(".sonDualEditor #btnToolbar .btn-group .btn-sm").each(function(){
 		$(this).on("click", function() {		
 			var $me = $(this);
 			var data = $me.data();
@@ -61,7 +61,7 @@ $(document).ready(function() {
 	});
 	
 	// 각 에디터 버튼 클릭시 액션 처리 
-	$("#btnToolbar .btn-group .dropdown-menu a").each(function(){
+	$(".sonDualEditor #btnToolbar .btn-group .dropdown-menu a").each(function(){
 		$(this).on("click", function() {		
 			var $me = $(this);
 			var data = $me.data();
@@ -72,7 +72,7 @@ $(document).ready(function() {
 	
 	setInterval(function() {
 		$("#wikimaincol").text("");
-		var txt = SONJS.markdown( $("#wikiEditor").val() ); 
+		var txt = SONJS.markup( $("#wikiEditor").val() );
 		$("#wikimaincol").append( txt ); 
 	}, 1000);
 	
@@ -86,7 +86,7 @@ $(document).ready(function() {
 
 <div class="container" style="padding-top: 10px;">
 	<div class="row">
-		<table class="" >
+		<table class="sonDualEditor" >
 			<thead>
 				<tr>
 					<th colspan="2">
