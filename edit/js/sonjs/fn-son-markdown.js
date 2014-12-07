@@ -24,8 +24,8 @@ var SONJS = (function(){
 		contents = SONJS.markdown.INFO( contents );
 		contents = SONJS.markdown.LINK( contents );
 		contents = SONJS.markdown.TABLE( contents );
-		contents = orderList( contents );
-		contents = unorderList( contents );
+		contents = SONJS.markdown.ORDERLIST( contents );
+        contents = SONJS.markdown.UNORDERLIST( contents );
 		return contents;
 	};
 	
@@ -46,6 +46,7 @@ var SONJS = (function(){
 		loadJQuery("js/sonjs/module/sonjs-markup-INFO.js");
 		loadJQuery("js/sonjs/module/sonjs-markup-LINK.js");
         loadJQuery("js/sonjs/module/sonjs-markup-TABLE.js");
+        loadJQuery("js/sonjs/module/sonjs-markup-ORDERLIST.js");
         loadJQuery("js/sonjs/module/sonjs-markup-LAYOUT.js");
 	};
 	SONJS.append();

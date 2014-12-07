@@ -78,64 +78,6 @@ $(document).ready(function() {
 	
 });
 
-
-
-
-function unorderList( contexts ){
-
-	if( contexts == null ){
-		var editText = $("#wikiEditor").val();	
-	}else{
-		var editText = contexts;	
-	}
-
-	var reg = /^[\*\-\+] (.*)/igm;
-	var reg2 = /^\s{1,}[\*\-\+] (.*)/igm;
-	editText = getOrderListReplaceAll(reg, reg2, "ul", editText);
-	editText = getOrderListReplaceAll(reg2, reg, "ul", editText);
-	
-	return editText;
-	
-}
-
-function getOrderListReplaceAll( reg, reg2, tag, editText ){
-	var arrayContents = editText.split("<br>");
-	var flag = false;
-	for( var i = 0; i < arrayContents.length; i++ ){
-		if( arrayContents[i].match( reg ) != null ){
-			if( flag ){
-				arrayContents[i] = "<li>" + arrayContents[i].replace(reg, "$1" ) + "</li>\n" ;
-			}else{
-				flag = true;
-				arrayContents[i] = "\n<"+tag+">\n<li>" + arrayContents[i].replace(reg, "$1" ) + "</li>\n" ;
-			}
-			
-		}else if( arrayContents[i].match( reg2 ) != null ){
-			arrayContents[i] = arrayContents[i];
-			
-		}else if( flag ){
-			arrayContents[i-1] = arrayContents[i-1] + "\n</"+tag+">\n";
-			flag = false;
-		}
-	}
-	return arrayContents.join("<br>");
-}
-
-function orderList( contexts ){
-	if( contexts == null ){
-		var editText = $("#wikiEditor").val();
-	}else{
-		var editText = contexts;
-	}
-
-	var reg = /^[\d]. (.*)/igm;
-	var reg2 = /^\s{1,}[\d]. (.*)/igm;
-	editText = getOrderListReplaceAll(reg, reg2, "ol", editText);
-	editText = getOrderListReplaceAll(reg2, reg, "ol", editText);
-	
-	return editText;
-}
-
 </script>
 
 <title>GliderWiki wiki view</title>
@@ -293,8 +235,6 @@ function orderList( contexts ){
 					</td>
 					<td style="width: 50%; padding-top: 10px;padding-left: 10px;">
 					    <div id="wikimaincol" style="border: 1px; overflow: scroll; height: 900px;">
-
-
 					    </div>
 					</td>
 				</tr>
