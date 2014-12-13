@@ -1,4 +1,4 @@
 # DualEditor
 
-MarkDown & RealTime View Editor for Howling Project (http://www.libqa.com)
+markup & RealTime View Editor for Howling Project (http://www.libqa.com)
 

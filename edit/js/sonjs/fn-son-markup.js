@@ -28,37 +28,37 @@ var SONJS = (function(){
         contents = SONJS.markup.UNORDERLIST( contents );
 		return contents;
 	};
-	
-	
-	SONJS.append = function(){
-        loadJQuery("js/sonjs/util/fn-editor-util.js");
-        loadJQuery("js/sonjs/util/fn-editor-layer.js");
-        loadJQuery("js/sonjs/util/fn-block-range.js");
-        loadJQuery("js/sonjs/util/fn-editor.js");
 
-		loadJQuery("js/sonjs/module/sonjs-markup-FONT.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-ALIGN.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-BOLD.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-ITALIC.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-DEL.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-UNDERLINING.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-SUPERSCRIPT.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-SUBERSCRIPT.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-H1.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-HR.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-FIELD.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-ALERT.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-INFO.js");
-		loadJQuery("js/sonjs/module/sonjs-markup-LINK.js");
-        loadJQuery("js/sonjs/module/sonjs-markup-TABLE.js");
-        loadJQuery("js/sonjs/module/sonjs-markup-ORDERLIST.js");
-        loadJQuery("js/sonjs/module/sonjs-markup-LAYOUT.js");
 
-	};
-	SONJS.append();
+    SONJS.append = function(src){
+        loadJQuery(src+"js/sonjs/util/fn-editor-util.js");
+        loadJQuery(src+"js/sonjs/util/fn-editor-layer.js");
+        loadJQuery(src+"js/sonjs/util/fn-block-range.js");
+        loadJQuery(src+"js/sonjs/util/fn-editor.js");
 
-    SONJS.setting = function(tarket){
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-FONT.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-ALIGN.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-BOLD.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-ITALIC.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-DEL.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-UNDERLINING.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-SUPERSCRIPT.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-SUBERSCRIPT.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-H1.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-HR.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-FIELD.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-ALERT.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-INFO.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-LINK.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-TABLE.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-ORDERLIST.js");
+        loadJQuery(src+"js/sonjs/module/sonjs-markup-LAYOUT.js");
 
+    };
+
+
+    SONJS.setting = function(src,tarket){
+        SONJS.append(src);
         tarket.append(imsiMarkup());
 
         //스크룰링 싱크
