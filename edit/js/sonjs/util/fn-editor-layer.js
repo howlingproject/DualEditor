@@ -35,17 +35,18 @@ var jisung;
 				swatch.on('click', function (e) {
 					e.preventDefault();
 					var $me = $(this);
-					var tagColor = $me.attr('rel').replac
-
+					var tagColor = $me.attr('rel').replace('#','');
+                    var param = ({
+                        'before' : '[' + data.before + '|' + tagColor + ']',
+                        'center' : data.center,
+                        'after' : '[' + data.after + ']'
+                    });
                     $.appendTag( textEditor, $me, param );
                 });
 
                 colorItems.append(swatch);
 
             }
-
-            var top = $me.offset().top;
-            var left = $me.offset().left;
 
             colorItems.appendTo($me.parent());
 
@@ -106,11 +107,6 @@ var jisung;
         tableSetHtml : function(hh, yy){
             var html = "";
             for( var h=0; h < hh; h++ ){e('#','');
-					var param = ({
-							'before' : '[' + data.before + '|' + tagColor + ']',
-							'center' : data.center,
-							'after' : '[' + data.after + ']'
-						});
          		 html += "<form class=\"form-inline\" role=\"form\">\n";
          		 for( var y=0; y < yy; y++ ){
          			 html += "<div class=\"form-group\">\n";
