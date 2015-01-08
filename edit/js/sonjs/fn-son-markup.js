@@ -1,3 +1,23 @@
+/*** Editor Script Wrapper ***/
+var oScripts=document.getElementsByTagName("script");
+var sEditorPath;
+for(var i=0;i<oScripts.length;i++)
+{
+    var sSrc=oScripts[i].src.toLowerCase();
+    if(sSrc.indexOf("fn-son-markup.js")!=-1) sEditorPath=oScripts[i].src.replace(/fn-son-markup.js/,"");
+}
+
+document.write("<scr"+"ipt src='http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></scr"+"ipt>");
+document.write("<scr"+"ipt src='http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></scr"+"ipt>");
+document.write("<scr"+"ipt src='http://code.jquery.com/jquery-migrate-1.2.1.js'></scr"+"ipt>");
+document.write("<li"+"nk rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' type='text/css' />");
+document.write("<li"+"nk rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' type='text/css' />");
+document.write("<link href='" + sEditorPath.replace("js/sonjs/","") + "css/sonjs.css' rel='stylesheet' type='text/css' />");
+
+document.write("<scr" + "ipt src='" + sEditorPath + "util/fn-editor-util.js' type='text/javascript'></scr" + "ipt>");
+document.write("<scr" + "ipt src='" + sEditorPath + "util/fn-editor-layer.js' type='text/javascript'></scr" + "ipt>");
+document.write("<scr" + "ipt src='" + sEditorPath + "util/fn-block-range.js' type='text/javascript'></scr" + "ipt>");
+document.write("<scr" + "ipt src='" + sEditorPath + "util/fn-editor.js' type='text/javascript'></scr" + "ipt>");
 
 var SONJS = (function(){
 	var SONJS = {};
@@ -31,34 +51,29 @@ var SONJS = (function(){
 
 
     SONJS.append = function(src){
-        loadJQuery(src+"js/sonjs/util/fn-editor-util.js");
-        loadJQuery(src+"js/sonjs/util/fn-editor-layer.js");
-        loadJQuery(src+"js/sonjs/util/fn-block-range.js");
-        loadJQuery(src+"js/sonjs/util/fn-editor.js");
-
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-FONT.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-ALIGN.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-BOLD.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-ITALIC.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-DEL.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-UNDERLINING.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-SUPERSCRIPT.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-SUBERSCRIPT.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-H1.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-HR.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-FIELD.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-ALERT.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-INFO.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-LINK.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-TABLE.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-ORDERLIST.js");
-        loadJQuery(src+"js/sonjs/module/sonjs-markup-LAYOUT.js");
+        loadJQuery(src+"module/sonjs-markup-FONT.js");
+        loadJQuery(src+"module/sonjs-markup-ALIGN.js");
+        loadJQuery(src+"module/sonjs-markup-BOLD.js");
+        loadJQuery(src+"module/sonjs-markup-ITALIC.js");
+        loadJQuery(src+"module/sonjs-markup-DEL.js");
+        loadJQuery(src+"module/sonjs-markup-UNDERLINING.js");
+        loadJQuery(src+"module/sonjs-markup-SUPERSCRIPT.js");
+        loadJQuery(src+"module/sonjs-markup-SUBERSCRIPT.js");
+        loadJQuery(src+"module/sonjs-markup-H1.js");
+        loadJQuery(src+"module/sonjs-markup-HR.js");
+        loadJQuery(src+"module/sonjs-markup-FIELD.js");
+        loadJQuery(src+"module/sonjs-markup-ALERT.js");
+        loadJQuery(src+"module/sonjs-markup-INFO.js");
+        loadJQuery(src+"module/sonjs-markup-LINK.js");
+        loadJQuery(src+"module/sonjs-markup-TABLE.js");
+        loadJQuery(src+"module/sonjs-markup-ORDERLIST.js");
+        loadJQuery(src+"module/sonjs-markup-LAYOUT.js");
 
     };
 
 
-    SONJS.setting = function(src,tarket,type){
-        SONJS.append(src);
+    SONJS.setting = function(tarket,type){
+        SONJS.append(sEditorPath);
         if( type == "mini"){
         	tarket.append(getMarkupEditMiniHtml());
         }else{
