@@ -72,7 +72,7 @@ var jisung;
                 html += "||셀제목";
                 html += "|| \n";
 
-                $(this).parent().parent().find('#tableHYdiv').each(function(){
+                $(this).parent().parent().find('#tableHYdiv').find('.form-inline').each(function(){
                     $(this).find('input').each(function(){
                         html += "|" + $(this).val();
                         $(this).val("");
@@ -106,7 +106,7 @@ var jisung;
 
         tableSetHtml : function(hh, yy){
             var html = "";
-            for( var h=0; h < hh; h++ ){e('#','');
+            for( var h=0; h < hh; h++ ){
          		 html += "<form class=\"form-inline\" role=\"form\">\n";
          		 for( var y=0; y < yy; y++ ){
          			 html += "<div class=\"form-group\">\n";
