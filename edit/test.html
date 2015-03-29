@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type='text/javascript' src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,9 +14,21 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            DualEditor.setting('',$("#test"));
-        });
+            //DualEditor.setting('', $("#test"));
 
+//
+//            var $divs = $('#wikiEditor, #wikimaincol');
+//            var sync = function () {
+//                var $other = $divs.not(this).off('scroll'), other = $other.get(0);
+//                var percentage = this.scrollTop / (this.scrollHeight - this.offsetHeight);
+//                if (percentage > 0.92) percentage = 1;
+//                other.scrollTop = percentage * (other.scrollHeight - other.offsetHeight);
+//                setTimeout(function () {
+//                    $other.on('scroll', sync);
+//                }, 200);
+//            }
+//            $divs.on('scroll', sync);
+        });
     </script>
 
     <title>GliderWiki wiki view</title>
