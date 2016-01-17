@@ -24,13 +24,14 @@ var DualEditor = (function(){
         contents = DualEditor.markup.H1( contents );
         contents = DualEditor.markup.HR( contents );
         contents = DualEditor.markup.LAYOUT( contents );
+        contents = DualEditor.markup.SYNTAX( contents );
 
         contents = DualEditor.markup.FONT( contents );
         contents = DualEditor.markup.FONTSIZE( contents );
         contents = DualEditor.markup.FONTSTYLE( contents );
         contents = DualEditor.markup.ALIGN( contents );
         contents = DualEditor.markup.BOLD( contents );
-        //contents = DualEditor.markup.ITALIC( contents );
+        contents = DualEditor.markup.ITALIC( contents );
         contents = DualEditor.markup.DEL( contents );
         contents = DualEditor.markup.UNDERLINING( contents );
         contents = DualEditor.markup.SUPERSCRIPT( contents );
@@ -71,6 +72,7 @@ var DualEditor = (function(){
         loadJQuery(src+"/js/DualEditor/module/mTABLE.js");
         loadJQuery(src+"/js/DualEditor/module/mORDERLIST.js");
         loadJQuery(src+"/js/DualEditor/module/mLAYOUT.js");
+        loadJQuery(src+"/js/DualEditor/module/mSyntax.js");
 
     };
 
