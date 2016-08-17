@@ -3,14 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet" type="text/css"/>
-<link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css"/>
-<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
-<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js" type="text/javascript"></script>
-<script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js" type="text/javascript"></script>
-    <script language="javascript" type="text/javascript">
-        SyntaxHighlighter.all();
-    </script>
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -19,6 +11,10 @@
 
 <script type="text/javascript" src="js/DualEditor/DualEditor-core.js"></script>
 <link href="js/DualEditor/css/DualEditor.css" rel="stylesheet">
+
+<link rel="stylesheet" href="js/DualEditor/syntaxhiglight/styles/dracula.css">
+<script src="js/DualEditor/syntaxhiglight/highlight.pack.js"></script>
+
 
 <style type="text/css">
 .dualEditor_dropdown a:hover {
@@ -40,7 +36,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
     DualEditor.setting({
-        src : '/Users/narumi12/MAC/IdeaProjects/DualEditor/edit2'
+        //src : '/Users/narumi12/MAC/IdeaProjects/DualEditor/edit2'
+        src : '/Users/songanji/git/DualEditor/edit2'
         ,tarketId : 'test'
         //,type : 'mini'
     });
@@ -191,24 +188,22 @@ $(document).ready(function() {
 
 								<button type="button" class="dualEditorWiki-btn btn btn-default btn-sm" data-toggle="modal" data-target="#layoutModal" data-mode="layer" data-type="layout" ><i class="fa fa-lightbulb-o"></i></button>
                                 <button type="button" class="dualEditorWiki-btn btn btn-default btn-sm" data-mode="append"  data-before="[syntax]"  data-center=" "  data-after="[syntax]"><i class="fa fa-file-code-o"></i></button>
-                                <button type="button" class="dualEditorWiki-btn btn btn-default btn-sm" data-mode="event"><i class="fa fa-lightbulb-o"></i></button>
+                                <a type="button" class="dualEditorWiki-btn btn btn-default btn-sm " data-toggle="collapse" href="#collapseExample"><i class="fa fa-lightbulb-o"></i></a>
 
 							</div>
 						</div>
                         <hr style="background-color:#ccc;height: 1px;margin-top: 10px;margin-bottom: 12px;">
-
-
-						<div style="height : 100px;">
-							<div class="col-md-3" style="height : 100px; overflow: auto">
-								<ul class="btn-xs nav nav-pills nav-stacked">
+						<div class="collapse" id="collapseExample" style="height : 100px;">
+							<div class="col-md-2" style="height : 100px; overflow: auto">
+								<ul class="nav nav-pills nav-stacked">
 									<li class="active"><a href="#Itext" data-toggle="pill" >텍스트 마크업</a></li>
 									<li><a href="#Ilist" data-toggle="pill" >정렬 마크업</a></li>
 									<li><a href="#Iarert" data-toggle="pill" >알림 마크업</a></li>
 									<li><a href="#Ispecial" data-toggle="pill" >특수 마크업</a></li>
 								</ul>
 							</div>
-							<div class="tab-content col-md-3" style="height : 100px; overflow: auto">
-								<div id="Itext" class="btn-xs tab-pane fade in active">
+							<div class="tab-content col-md-2" style="height : 100px; overflow: auto">
+								<div id="Itext" class="tab-pane fade in active">
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active"><a href="#Ib" data-toggle="pill" >굵게</a></li>
 										<li><a href="#Ii" data-toggle="pill" >기울기</a></li>
@@ -219,11 +214,11 @@ $(document).ready(function() {
 										<li><a href="#Istyle" data-toggle="pill" >폰트 스타일</a></li>
 										<li><a href="#Ifont" data-toggle="pill" >폰트 크기</a></li>
 										<li><a href="#Ihead" data-toggle="pill" >폰트 헤드</a></li>
-										<li><a href="#Icolor" data-toggle="pill" >폰트 색상밑줄</a></li>
+										<li><a href="#Icolor" data-toggle="pill" >폰트 색상</a></li>
 									</ul>
 								</div>
 
-								<div id="Ilist" class="btn-xs tab-pane fade">
+								<div id="Ilist" class="tab-pane fade">
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active"><a href="#Imark" data-toggle="pill" >마크순서</a></li>
 										<li><a href="#Inum" data-toggle="pill" >숫자순서</a></li>
@@ -233,7 +228,7 @@ $(document).ready(function() {
 									</ul>
 								</div>
 
-								<div id="Iarert" class="btn-xs tab-pane fade">
+								<div id="Iarert" class="tab-pane fade">
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active"><a href="#Ifield" data-toggle="pill" >필드</a></li>
 										<li><a href="#Ialer" data-toggle="pill" >알림</a></li>
@@ -241,7 +236,7 @@ $(document).ready(function() {
 									</ul>
 								</div>
 
-								<div id="Ispecial" class="btn-xs tab-pane fade">
+								<div id="Ispecial" class="tab-pane fade">
 									<ul class="nav nav-pills nav-stacked">
 										<li class="active"><a href="#Ihr" data-toggle="pill" >문단선</a></li>
 										<li><a href="#Isy" data-toggle="pill" >신택스하이라이트</a></li>
@@ -250,7 +245,7 @@ $(document).ready(function() {
 									</ul>
 								</div>
 							</div>
-							<div class="tab-content col-md-6"style="height : 100px; overflow: auto">
+							<div class="tab-content col-md-5"style="height : 100px; overflow: auto">
 								<div id="Ib" class="well tab-pane fade in active">
 									Syntax : <code>** **</code><br>
 									Example : <code>**bold**</code><br>
@@ -274,17 +269,17 @@ $(document).ready(function() {
 								<div id="Isub" class="well tab-pane fade">
 									Syntax : <code>^ ^</code><br>
 									Example : <code>^SUBERSCRIPT^</code><br>
-									output : <sub>italicized</sub>
+									output : <sub>SUBERSCRIPT</sub>
 								</div>
 								<div id="Isup" class="well tab-pane fade">
 									Syntax : <code>~ ~</code><br>
 									Example : <code>~SUPERSCRIPT~</code><br>
-									output : <sup>italicized</sup>
+									output : <sup>SUPERSCRIPT</sup>
 								</div>
 								<div id="Istyle" class="well tab-pane fade">
 									Syntax : <code>[font|굴림] [font]</code><br>
 									Example : <code>[font|굴림]font-style[font]</code><br>
-									output : <span style="font-family:'굴림','gulim'">sdfasdfasd</span>
+									output : <span style="font-family:'굴림','gulim'">굴림체</span>
 								</div>
 								<div id="Ifont" class="well tab-pane fade">
 									Syntax : <code>[size|16] [size]</code><br>
@@ -293,7 +288,7 @@ $(document).ready(function() {
 								</div>
 								<div id="Ihead" class="well tab-pane fade">
 									Syntax : <code># or ## or ### </code><br>
-									Example :
+									Example :<br>
 									<code>
 									# h1<br>
 									## h2<br>
@@ -305,14 +300,14 @@ $(document).ready(function() {
 									<h3>h3</h3>
 								</div>
 								<div id="Icolor" class="well tab-pane fade">
-									Syntax : <code>[color|fac08f] [color]</code><br>
-									Example : <code>[color|fac08f]font-color[color]</code><br>
-									output : <span style="font-size: 16px;">font-size</span>
+									Syntax : <code>[color|428bca] [color]</code><br>
+									Example : <code>[color|428bca]font-color[color]</code><br>
+									output : <span style="color: #428bca">font-color</span>
 								</div>
 
 								<div id="Imark" class="well tab-pane fade">
 									Syntax : <code>* 텍스트</code><br>
-									Example : <code>
+									Example : <code><br>
 									* list1<br>
 									* list2<br>
 									* list3<br>
@@ -324,7 +319,7 @@ $(document).ready(function() {
 								</div>
 								<div id="Inum" class="well tab-pane fade">
 									Syntax : <code>1. 텍스트</code><br>
-									Example : <code>
+									Example : <code><br>
 									1. list1<br>
 									1. list2<br>
 									1. list3<br>
@@ -410,16 +405,14 @@ $(document).ready(function() {
 								</div>
 								<div id="Ilin" class="well tab-pane fade">
 									Syntax : <code>[lable](url)</code><br>
-									Example : <code>[lable](http://11st.co.kr)</code><br>
-									output : <a href="http://11st.co.kr" target="_blank">lable</a><br>
-
+									Example : <code>[www.libqa.com](http://www.libqa.com/)</code><br>
+									output : <a href="http://11st.co.kr" target="_blank">www.libqa.com</a><br>
+                                    <br>
 									Syntax : <code>![img text](url)</code><br>
 									Example : <code>![img text](https://daringfireball.net/graphics/logos)</code><br>
 									output : <p><img src="https://daringfireball.net/graphics/logos" style="max-width:100%; height: auto;" alt="img text"></p>
 								</div>
 							</div>
-
-							<hr style="background-color:#ccc;height: 1px;margin-top: 10px;margin-bottom: 12px;">
 						</div>
 					</th>
 				</tr>

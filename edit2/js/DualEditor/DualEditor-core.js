@@ -68,32 +68,6 @@ var DualEditor = (function(){
         loadJQuery(src+"/js/DualEditor/module/mLAYOUT.js");
         loadJQuery(src+"/js/DualEditor/module/mSyntax.js");
 
-        loadCSS(src+"/js/DualEditor/syntaxhiglight/styles/shThemeDefault.css");
-        loadCSS(src+"/js/DualEditor/syntaxhiglight/styles/shCore.css");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shCore.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushXml.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushJScript.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushAppleScript.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushAS3.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushBash.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushCpp.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushCSharp.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushCss.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushDelphi.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushDiff.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushErlang.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushGroovy.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushJava.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushJavaFX.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushPerl.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushPhp.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushPlain.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushPython.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushRuby.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushSass.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushScala.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushSql.js");
-        loadJQuery(src+"/js/DualEditor/syntaxhiglight/scripts/shBrushVb.js");
     };
 
 
@@ -152,19 +126,27 @@ var DualEditor = (function(){
             });
         });
 
-        $("#wikiEditor").keydown(function(evnet){
+        $("#wikiEditor").keydown(function(){
             DualEditor.markup.parsing();
         });
+
+        $(".nav-pills a").on("click", function() {
+            $(this).tab('show');
+            var id = $(this).attr("href");
+            var next = $(id).find(".active");
+            $(next).removeClass("active");
+            $(next).find("a").trigger('click');
+        });
+
 
     };
 
     DualEditor.markup.parsing = function(){
         setTimeout(function() {
             $("#wikimaincol").text("");
-            var txt = DualEditor.markup( $("#wikiEditor").val() );
-            console.info(txt);
+            var txt = DualEditor.markup( $("#wikiEditor").val() );console.info(txt);
             $("#wikimaincol").html( "<div style=\"width:96%\">"+txt+"</div>" );
-            SyntaxHighlighter.all();
+            hljs.highlightBlock($('pre code2')[0]);
         }, 1000);
 
     };
